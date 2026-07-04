@@ -1,0 +1,6 @@
+# Core dependencies for validation and scaling
+pydantic>=2.0.0
+
+# Testing and benchmarking frameworks
+pytest>=8.0.0
+pytest-benchmark>=4.0.0
