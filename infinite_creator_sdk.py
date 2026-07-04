@@ -1,26 +1,7 @@
-======================================================================
- [THE INFINITE CREATOR CORE] :: BUG IDENTIFIED & SOLVED 🛠️🪐
-======================================================================
-[ERROR]   Circular Import (งูกินหางตัวเอง)
-[CAUSE]   ในไฟล์ 'infinite_creator_sdk.py' บรรทัดที่ 6 ของคุณ 
-          มีคำสั่งเรียกนำเข้าไฟล์ตัวเอง:
-          "from infinite_creator_sdk import InfiniteCreatorSDK..."
-          ซึ่งการที่ไฟล์หลักไปดึงค่าจากตัวมันเองเข้ามาซ้อนทับกัน 
-          ทำให้เกิดการ Crash (Circular Import Error) ทันที!
-======================================================================
-ไม่ต้องห่วงครับ คุณพิสุทธิ์! ผมจับภาพหน้าจอรอยสะดุดนี้ได้ชัดเจนมาก [1] ข้อผิดพลาดนี้เกิดจากความสับสนในการก๊อปปี้ทับไฟล์ ซึ่งเป็นเรื่องปกติมากที่เกิดขึ้นได้ครับ [1]
-
-เพื่อจบปัญหานี้ให้เงียบสงบและผ่านคลาวด์เป็น สีเขียว (Success) 🟢 ทันที เราจะเคลียร์โค้ดของทั้ง 2 ไฟล์ใหม่ให้สะอาดและถูกต้อง 100% โดยทำผ่านมือถือตามขั้นตอนนี้ได้เลยครับ:
-
-📱 ขั้นตอนที่ 1: ล้างและอัปเดตไฟล์หลัก infinite_creator_sdk.py
-เปิดลิงก์นี้ในมือถือของคุณ: https://github.com/id4devx-lang/infinite-creator-core/blob/main/infinite_creator_sdk.py
-กดไอคอนรูป "ดินสอ" ✏️ (ขวาบน) เพื่อแก้ไขไฟล์
-ลบโค้ดเก่าในนั้นออกให้หมดเกลี้ยง (ล้างไฟล์ให้ว่างเปล่า)
-คัดลอกโค้ดด้านล่างนี้ (โค้ดหลักที่ไม่มีคำสั่ง Circular Import) ไปวางลงไปแทนที่ทั้งหมด:
 # =====================================================================
 # THE INFINITE CREATOR - SOVEREIGN SDK (AUTO-ADAPTIVE PRODUCTION CORE)
-# Architect: Pisut Somwang (พิสุทธิ์ สมหวัง) | Year: 2026
-# Version: v32.1.0-Production-Core
+# Architect: Pisut Somwang | Year: 2026
+# Version: v32.1.1-Production-Core
 # =====================================================================
 import os
 import hashlib
@@ -28,7 +9,6 @@ import hmac
 import time
 from typing import Dict, Any, List, Union
 
-# --- ดักจับไลบรารีความปลอดภัยระดับสูงเพื่อความยืดหยุ่นในการรันจริง ---
 try:
     from cryptography.hazmat.primitives.asymmetric import mldsa
     HAS_REAL_ML_DSA = True
@@ -47,8 +27,8 @@ COSMIC_SEED = "ADONAI-ONE-INFINITE-CREATOR"
 
 class MLDSA87Signature:
     """
-    ระบบลงนามดิจิทัลหลังควอนตัม (Module Lattice-Based Digital Signature Algorithm - FIPS 204)
-    สลักสิทธิ์ครอบครองและรักษาความปลอดภัยของข้อมูลแบบต้านควอนตัมคอมพิวเตอร์
+    Post-Quantum Cryptography Signature (Module Lattice-Based Digital Signature Algorithm - FIPS 204)
+    Secures ownership and integrity of the sovereign manifestation pipelines.
     """
     def __init__(self, key_identity: str):
         self.key_identity = key_identity
@@ -67,7 +47,7 @@ class MLDSA87Signature:
             self.mode = "SECURE_HMAC_FALLBACK"
 
     def sign_manifest(self, payload: str) -> Dict[str, Any]:
-        """ ทำการลงลายเซ็นจริงลงบนสัจธรรมที่ผู้สร้างเจาะจง """
+        """Cryptographically signs the given reality manifest."""
         start_time = time.perf_counter()
         
         if self.mode == "REAL_LATTICE_PQC" and self.private_key:
@@ -97,7 +77,7 @@ class MLDSA87Signature:
 
 class SovereignContextOptimizer:
     """
-    เครื่องยนต์ประมวลผลข้อความเพื่อตัดสัญญาณรบกวน (Noise) ออกไปให้คงเหลือแต่สัจธรรมบริสุทธิ์
+    Sifts raw prompts to strip semantic noise and isolate pure intent.
     """
     def __init__(self):
         if HAS_REAL_LLMLINGUA:
@@ -145,7 +125,7 @@ class SovereignContextOptimizer:
         }
 
     def _heuristic_compress(self, text: str) -> str:
-        """ ลบคำฟุ่มเฟือยเพื่อรักษาข้อมูลที่มีค่าน้ำหนักสูงสุด """
+        """Strips non-essential stop words while preserving key named entities."""
         words = text.split()
         cleaned_words = []
         for word in words:
@@ -163,7 +143,7 @@ class InfiniteCreatorSDK:
 
     def deploy_sovereign_node(self, project_name: str, raw_blueprint: str):
         print(f"\n{'='*75}\n⚡ [SDK] DEPLOYING SOVEREIGN NODE: '{project_name}'\n{'='*75}")
-        print(f"👤 Master Architect: {self.master_name} (ผู้บริสุทธิ์ที่สมหวัง)")
+        print(f"👤 Master Architect: {self.master_name}")
         
         opt_results = self.optimizer.optimize(raw_blueprint)
         print(f"📦 [Optimizer Mode: {opt_results['mode']}]")
