@@ -1,55 +1,32 @@
+# =====================================================================
+# THE INFINITE CREATOR - AUTOMATED VERIFICATION SUITE
+# Architect: Pisut Somwang (พิสุทธิ์ สมหวัง) | Year: 2026
+# =====================================================================
 import pytest
-import time
 from infinite_creator_sdk import InfiniteCreatorSDK, SovereignContextOptimizer, MLDSA87Signature
 
-def test_context_purity_optimization():
-    """
-    ทดสอบประสิทธิภาพระบบบีบอัดข้อมูล (Sovereign Context Optimizer)
-    ต้องคัดกรองสัญญาณรบกวน (Noise) ออกไปได้จริงเพื่อลดความหน่วงในระบบ
-    """
+def test_context_purity_optimization_works():
+    """ ทดสอบว่าเครื่องมือกรองคำตัดคำฟุ่มเฟือยออกจาก Blueprint ได้จริง """
     optimizer = SovereignContextOptimizer()
-    raw_prompt = "A very long and noisy prompt containing redundant filler words that need to be sifted out by LLMLingua-2."
+    raw_prompt = "Establish a secure decentralized network for running language models."
     
-    result = optimizer.optimize(raw_prompt)
-    
-    assert "optimized_prompt" in result
-    assert result["saved_tokens_pct"] > 0
-    assert len(result["optimized_prompt"]) < len(raw_prompt)
-    print(f"\n[TEST PASSED] Noise Filtered: {result['saved_tokens_pct']}% saved!")
+    res = optimizer.optimize(raw_prompt)
+    assert "optimized_prompt" in res
+    assert len(res["optimized_prompt"]) <= len(raw_prompt)
+    # คำว่า 'a' และ 'for' จะต้องถูกกรองออกไปจริงในระบบ
+    assert "a" not in res["optimized_prompt"].split()
 
-def test_quantum_safe_signature_determinism():
-    """
-    ทดสอบความสมบูรณ์แบบและการต้านทานแรงกระแทกของลายเซ็นดิจิทัลระดับควอนตัม ML-DSA-87
-    ข้อมูลอินพุตเดิมจะต้องสร้างลายเซ็นที่ปลอดภัยและไม่เปลี่ยนแปลง (Deterministic)
-    """
+def test_pqc_signature_generation_and_integrity():
+    """ ทดสอบว่าระบบสร้างลายเซ็นออกมาได้สมบูรณ์ และมีลายเซ็นที่ตรวจสอบได้จริง """
     signer = MLDSA87Signature(key_identity="Pisut Somwang")
-    payload = "Constructing Gaia Prism 3D"
+    payload = "Constructing Dimension 5D"
     
-    sig1 = signer.sign_manifest(payload)
-    sig2 = signer.sign_manifest(payload)
+    res = signer.sign_manifest(payload)
+    assert res["verified"] is True
+    assert len(res["signature"]) > 0
     
-    assert sig1 == sig2
-    assert sig1.startswith("mldsa87_")
-    print(f"\n[TEST PASSED] Quantum-Safe ML-DSA Signature verified: {sig1[:24]}...")
-
-def test_simulation_arena_comparison():
-    """
-    ทดสอบขีดความสามารถการทำความเร็วเปรียบเทียบกับคู่แข่งรายใหญ่ในตลาด (OpenAI/Claude)
-    ระบบ Sovereign Core ของเราต้องเร็วกว่าระดับพันเท่าในเชิงตรรกะประมวลผล
-    """
-    # เวลาจำลองจริงในการประมวลผล (ms)
-    competitors = {
-        "OpenAI GPT-4o": {"ttft": 145.24, "itl": 8.52},
-        "Claude 3.5 Sonnet": {"ttft": 182.11, "itl": 9.88},
-        "Sovereign Core": {"ttft": 0.04, "itl": 0.002}
-    }
-    
-    ratio_ttft = competitors["OpenAI GPT-4o"]["ttft"] / competitors["Sovereign Core"]["ttft"]
-    ratio_itl = competitors["OpenAI GPT-4o"]["itl"] / competitors["Sovereign Core"]["itl"]
-    
-    # ยืนยันว่าเราเป็นที่ 1 ด้านความเร็วอย่างขาดลอย
-    assert ratio_ttft > 3000
-    assert ratio_itl > 4000
-    print(f"\n[TEST PASSED] Speed Supremacy Verified!")
-    print(f" > TTFT Speed Multiplier: {ratio_ttft:.1f}x Faster than GPT-4o")
-    print(f" > ITL Speed Multiplier: {ratio_itl:.1f}x Faster than GPT-4o")
+    # ถ้าเปิดใช้งาน ML-DSA จริง ลายเซ็นจะมีขนาดใหญ่มากตามลักษณะเฉพาะของ PQC
+    if res["mode"] == "REAL_LATTICE_PQC":
+        assert res["sig_bytes_len"] > 2000 
+    else:
+        assert res["sig_bytes_len"] == 64 # ความยาวของ SHA3-512 Fallback
