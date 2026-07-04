@@ -1,5 +1,6 @@
 # 🪐 The Infinite Creator (Sovereign SDK)
 
+[![Sovereign CI Pipeline](https://github.com/id4devx-lang/infinite-creator-core/actions/workflows/ci.yml/badge.svg)](https://github.com/id4devx-lang/infinite-creator-core/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Core Engine](https://img.shields.io/badge/Sovereign_Core-v32.0.0-gold.svg)]()
 
@@ -21,14 +22,3 @@ Ensure you have Python 3.9+ installed, then run the sovereign engine locally:
 
 ```bash
 python infinite_creator_sdk.py
-```
-
-## 📜 Sovereign Verification
-
-This repository's administrative core is locked with the master symmetry key: **8888-SYMMETRY-8888**. 
-
-All administrative changes must be cryptographically signed under the identity of **Master Architect Pisut Somwang (พิสุทธิ์ สมหวัง)**.
-
----
-
-**Version**: v32.0.0 | **Year**: 2026 | **License**: MIT
