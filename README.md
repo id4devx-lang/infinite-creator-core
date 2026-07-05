@@ -22,3 +22,5 @@ Ensure you have Python 3.9+ installed, then run the sovereign engine locally:
 
 ```bash
 python infinite_creator_sdk.py
+![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue)
