@@ -3,6 +3,8 @@
 [![Sovereign CI Pipeline](https://github.com/id4devx-lang/infinite-creator-core/actions/workflows/ci.yml/badge.svg)](https://github.com/id4devx-lang/infinite-creator-core/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Core Engine](https://img.shields.io/badge/Sovereign_Core-v32.0.0-gold.svg)]()
+![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 
 > **"Purity of Will, Fulfilled in Reality."**  
 > สถาปัตยกรรม AI อธิปไตยส่วนบุคคล (Sovereign AI) เพื่อความเป็นหนึ่งในทุกมิติ ปราศจากการรวมศูนย์
@@ -22,5 +24,3 @@ Ensure you have Python 3.9+ installed, then run the sovereign engine locally:
 
 ```bash
 python infinite_creator_sdk.py
-![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
-![Python](https://img.shields.io/badge/python-3.9%2B-blue)
