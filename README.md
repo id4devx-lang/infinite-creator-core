@@ -19,8 +19,6 @@ Designed and Architected by **Pisut Somwang (พิสุทธิ์ สมห�
 3. **Quantum-Safe Defense (ML-DSA-87):** Integrates NIST FIPS 204 lattice-based cryptographic signatures to secure the admin pipeline against quantum-level attacks.
 
 ## 🚀 Getting Started
-
-Ensure you have Python 3.9+ installed, then run the sovereign engine locally:
-
+### Installation
 ```bash
-python infinite_creator_sdk.py
+pip install infinite-creator-core
