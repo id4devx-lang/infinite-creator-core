@@ -27,4 +27,4 @@ from infinite_creator_sdk import SovereignCore
 core = SovereignCore(speed="eagle", compress=True, quantum_safe=True)
 result = core.generate("Write 3 clothing captions")
 print(result.text)
-print(f"Tokens saved: {result.tokens_saved}%") 
+print(f"Tokens saved: {result.tokens_saved}%")
